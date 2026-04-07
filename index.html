@@ -2,24 +2,61 @@
 <html>
 <head>
   <title>GHPS Kamasamudra Result 2025-26</title>
+
   <style>
-    body { font-family: Arial; text-align: center; margin: 30px; }
-    input, button { padding: 10px; font-size: 16px; margin: 5px; }
-    #card {
-      margin-top: 20px;
-      border: 2px solid #000;
-      padding: 20px;
-      display: inline-block;
-      width: 350px;
-      text-align: left;
-      background: #f9f9f9;
-      border-radius: 10px;
+    body { font-family: Arial; background: #eef2f3; text-align: center; }
+
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
     }
+
+    .card {
+      width: 420px;
+      margin: auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px #aaa;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .top-header {
+      background: #27ae60;
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .section {
+      background: #2980b9;
+      color: white;
+      padding: 8px;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th { background: #f4f4f4; }
+
+    .result-box { padding: 10px; text-align: left; }
+
     .pass { color: green; font-weight: bold; }
     .fail { color: red; font-weight: bold; }
-    h3 { text-align: center; }
   </style>
 </head>
+
 <body>
 
 <h2>GHPS Kamasamudra - SA2 Result 2025-26</h2>
@@ -32,7 +69,7 @@
 
 <script>
 
-// Grade to Marks
+// Grade → Marks
 function g(m){
   if(m=="A+") return 13;
   if(m=="A") return 12;
@@ -42,6 +79,7 @@ function g(m){
   return 0;
 }
 
+// ✅ ALL 65 STUDENTS
 const students = {
 
 "127045131":{name:"ABHIJITH S",class:"9",k:g("C+"),e:g("B+"),h:g("B"),m:g("B"),s:g("B"),ss:g("C+")},
@@ -127,28 +165,37 @@ function getResult(){
     let s=students[roll];
     let total=s.k+s.e+s.h+s.m+s.s+s.ss;
     let percentage=(total/78)*100;
-
     let result=(percentage>=35)?"PASS":"FAIL";
     let cls=(percentage>=35)?"pass":"fail";
 
     document.getElementById("result").innerHTML=`
-    <div id="card">
-    <h3>Marks Card</h3>
-    <b>Name:</b> ${s.name}<br>
-    <b>Enrollment No:</b> ${roll}<br>
-    <b>Class:</b> ${s.class}<br><br>
+    <div class="card">
+      <div class="top-header">
+        <p><b>Name:</b> ${s.name}</p>
+        <p><b>Reg No:</b> ${roll}</p>
+        <p><b>Class:</b> ${s.class}</p>
+      </div>
 
-    Kannada: ${s.k}<br>
-    English: ${s.e}<br>
-    Hindi: ${s.h}<br>
-    Maths: ${s.m}<br>
-    Science: ${s.s}<br>
-    Social: ${s.ss}<br><br>
+      <div class="section">Part A - Subject Marks</div>
 
-    <b>Total:</b> ${total}/78<br>
-    <b>Percentage:</b> ${percentage.toFixed(2)}%<br>
-    <b>Grade:</b> ${getGrade(percentage)}<br>
-    <b>Result:</b> <span class="${cls}">${result}</span>
+      <table>
+        <tr><th>Subject</th><th>Marks</th></tr>
+        <tr><td>Kannada</td><td>${s.k}</td></tr>
+        <tr><td>English</td><td>${s.e}</td></tr>
+        <tr><td>Hindi</td><td>${s.h}</td></tr>
+        <tr><td>Maths</td><td>${s.m}</td></tr>
+        <tr><td>Science</td><td>${s.s}</td></tr>
+        <tr><td>Social</td><td>${s.ss}</td></tr>
+      </table>
+
+      <div class="section">Result Summary</div>
+
+      <div class="result-box">
+        <b>Total:</b> ${total}/78 <br>
+        <b>Percentage:</b> ${percentage.toFixed(2)}% <br>
+        <b>Grade:</b> ${getGrade(percentage)} <br>
+        <b>Result:</b> <span class="${cls}">${result}</span>
+      </div>
     </div>`;
   } else {
     document.getElementById("result").innerHTML="<b>No result found!</b>";
