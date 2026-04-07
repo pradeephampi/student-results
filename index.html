@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GHPS Kamasamudra Result 2025-26</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin: 30px; }
+    input, button { padding: 10px; font-size: 16px; margin: 5px; }
+    #card {
+      margin-top: 20px;
+      border: 2px solid #000;
+      padding: 20px;
+      display: inline-block;
+      width: 350px;
+      text-align: left;
+      background: #f9f9f9;
+      border-radius: 10px;
+    }
+    .pass { color: green; font-weight: bold; }
+    .fail { color: red; font-weight: bold; }
+    h3 { text-align: center; }
+  </style>
+</head>
+<body>
+
+<h2>GHPS Kamasamudra - SA2 Result 2025-26</h2>
+
+<input type="text" id="roll" placeholder="Enter Enrollment Number">
+<button onclick="getResult()">Get Result</button>
+<button onclick="printResult()">Print</button>
+
+<div id="result"></div>
+
+<script>
+
+// Grade to Marks
+function g(m){
+  if(m=="A+") return 13;
+  if(m=="A") return 12;
+  if(m=="B+") return 10;
+  if(m=="B") return 8;
+  if(m=="C+") return 6;
+  return 0;
+}
+
+const students = {
+
+"127045131":{name:"ABHIJITH S",class:"9",k:g("C+"),e:g("B+"),h:g("B"),m:g("B"),s:g("B"),ss:g("C+")},
+"125603264":{name:"AISHWARYA G",class:"9",k:g("A"),e:g("A"),h:g("A+"),m:g("A"),s:g("A+"),ss:g("A")},
+"125583666":{name:"AISHWARYA N",class:"9",k:g("C+"),e:g("B+"),h:g("B"),m:g("B+"),s:g("B"),ss:g("C+")},
+"122287459":{name:"AKANKSHA H",class:"9",k:g("B"),e:g("B+"),h:g("A+"),m:g("B+"),s:g("A"),ss:g("A")},
+"126655974":{name:"AMULYA N",class:"9",k:g("C+"),e:g("C+"),h:g("B+"),m:g("C+"),s:g("C+"),ss:g("C+")},
+"120717613":{name:"ANANYA P",class:"9",k:g("B"),e:g("A"),h:g("A+"),m:g("B+"),s:g("A+"),ss:g("A")},
+"122566334":{name:"ANKITHA R",class:"9",k:g("B"),e:g("B+"),h:g("A+"),m:g("B+"),s:g("A+"),ss:g("B+")},
+"125591204":{name:"APEKSHA H",class:"9",k:g("A"),e:g("A"),h:g("A+"),m:g("A"),s:g("A+"),ss:g("A")},
+"125583857":{name:"ASHOKA T",class:"9",k:g("C+"),e:g("C+"),h:g("C+"),m:g("C+"),s:g("C+"),ss:g("C+")},
+"124108992":{name:"ASHWINI J",class:"9",k:g("C+"),e:g("C+"),h:g("C+"),m:g("C+"),s:g("C+"),ss:g("C+")},
+"125599269":{name:"AZEEM A",class:"9",k:g("C+"),e:g("B+"),h:g("B"),m:g("B+"),s:g("A"),ss:g("B+")},
+"125601791":{name:"BHARATH N",class:"9",k:g("B+"),e:g("B+"),h:g("B"),m:g("B+"),s:g("A"),ss:g("B+")},
+"123737518":{name:"BHARATH K S",class:"9",k:g("A"),e:g("B+"),h:g("B+"),m:g("B+"),s:g("A+"),ss:g("B+")},
+"127046233":{name:"BOMMAIAH N",class:"9",k:0,e:0,h:0,m:0,s:0,ss:0},
+"125592543":{name:"BRUNDA N",class:"9",k:g("B+"),e:g("A"),h:g("A"),m:g("A"),s:g("A+"),ss:g("B+")},
+"125413047":{name:"CHAITHRA E",class:"9",k:g("B"),e:g("B+"),h:g("A"),m:g("B+"),s:g("A"),ss:g("B")},
+"127047291":{name:"CHALIMESHA N",class:"9",k:g("B"),e:g("B+"),h:g("C+"),m:g("B"),s:g("B+"),ss:g("B")},
+"120960513":{name:"CHANDU T",class:"9",k:g("B+"),e:g("A"),h:g("A+"),m:g("A"),s:g("A+"),ss:g("B+")},
+"125602588":{name:"DEEKSHITH A",class:"9",k:g("C+"),e:g("B"),h:g("C+"),m:g("C+"),s:g("B"),ss:g("C+")},
+"125600362":{name:"ERANNA C",class:"9",k:g("C+"),e:g("C+"),h:g("C+"),m:g("C+"),s:g("C+"),ss:g("C+")},
+"122563329":{name:"ERANNA S",class:"9",k:g("C+"),e:g("B+"),h:g("C+"),m:g("B"),s:g("B+"),ss:g("C+")},
+"126468052":{name:"JEEVITHA M",class:"9",k:g("B"),e:g("B+"),h:g("A"),m:g("A"),s:g("A+"),ss:g("B+")},
+"125601159":{name:"KALPANA K",class:"9",k:g("A"),e:g("A"),h:g("A+"),m:g("A"),s:g("A+"),ss:g("A")},
+"126527632":{name:"KEERTHANA G",class:"9",k:0,e:0,h:0,m:0,s:0,ss:0},
+"125604715":{name:"KEERTHY E",class:"9",k:g("C+"),e:g("B"),h:g("B+"),m:g("B+"),s:g("A"),ss:g("B+")},
+"126510429":{name:"LAKSHMI S",class:"9",k:g("C+"),e:g("C+"),h:g("C+"),m:g("C+"),s:g("C+"),ss:g("C+")},
+"122058789":{name:"MADANA GOPALA M",class:"9",k:g("B"),e:g("B+"),h:g("B"),m:g("C+"),s:g("B+"),ss:g("C+")},
+"127043487":{name:"MANASA T",class:"9",k:g("B"),e:g("B+"),h:g("A"),m:g("B+"),s:g("A+"),ss:g("B+")},
+"126465914":{name:"MANU L",class:"9",k:g("B"),e:g("B+"),h:g("B+"),m:g("B"),s:g("A"),ss:g("B+")},
+"125594523":{name:"MANYA M",class:"9",k:g("A+"),e:g("A"),h:g("A+"),m:g("A"),s:g("A+"),ss:g("A")},
+"125592982":{name:"MURALI R",class:"9",k:g("C+"),e:g("A"),h:g("B+"),m:g("B+"),s:g("B+"),ss:g("B+")},
+"125607279":{name:"NAGACHETHANA N",class:"9",k:g("B+"),e:g("B+"),h:g("C+"),m:g("B"),s:g("A"),ss:g("B")},
+"126509632":{name:"NAGESHA K",class:"9",k:g("B"),e:g("B+"),h:g("B"),m:g("B"),s:g("B+"),ss:g("B+")},
+"123702348":{name:"NAGESHA E",class:"9",k:g("C+"),e:g("B"),h:g("C+"),m:g("B"),s:g("A"),ss:g("B")},
+"125589584":{name:"NANDINI D",class:"9",k:g("B"),e:g("B+"),h:g("B+"),m:g("B+"),s:g("A"),ss:g("B+")},
+"007227745":{name:"NARASIMHA N",class:"9",k:g("C+"),e:g("C+"),h:g("C+"),m:g("C+"),s:g("C+"),ss:g("C+")},
+"126510802":{name:"NAYANA M",class:"9",k:g("C+"),e:g("B+"),h:g("B"),m:g("B+"),s:g("B+"),ss:g("B+")},
+"122560473":{name:"NITHIN J",class:"9",k:g("B"),e:g("B"),h:g("B"),m:g("B"),s:g("A"),ss:g("C+")},
+"122569787":{name:"PADMINI B",class:"9",k:g("C+"),e:g("C+"),h:g("C+"),m:g("B"),s:g("B"),ss:g("C+")},
+"125592126":{name:"PALLAVI L",class:"9",k:g("B+"),e:g("A"),h:g("B"),m:g("A"),s:g("A"),ss:g("B+")},
+"125596266":{name:"POOJA C",class:"9",k:g("C+"),e:g("B"),h:g("C+"),m:g("B+"),s:g("B"),ss:g("C+")},
+"125583486":{name:"POOJA N",class:"9",k:g("B+"),e:g("B+"),h:g("B"),m:g("B+"),s:g("A+"),ss:g("B")},
+"121477015":{name:"PRAJWAL T",class:"9",k:g("C+"),e:g("C+"),h:g("B"),m:g("C+"),s:g("B"),ss:g("B")},
+"125599901":{name:"PRAVEENA H",class:"9",k:g("B+"),e:g("B+"),h:g("B"),m:g("B+"),s:g("A"),ss:g("B+")},
+"129542278":{name:"PUNITH C",class:"9",k:g("A"),e:g("A"),h:g("B+"),m:g("B+"),s:g("A+"),ss:g("B+")},
+"125595208":{name:"RAGINI M",class:"9",k:g("B+"),e:g("A"),h:g("B+"),m:g("B+"),s:g("A+"),ss:g("A")},
+"124111927":{name:"RAJA J",class:"9",k:g("C+"),e:g("C+"),h:g("C+"),m:g("C+"),s:g("C+"),ss:g("C+")},
+"007833404":{name:"RAKESH K",class:"9",k:0,e:0,h:0,m:0,s:0,ss:0},
+"125606122":{name:"RANGASWAMY R",class:"9",k:g("C+"),e:g("B+"),h:g("C+"),m:g("B+"),s:g("A"),ss:g("B+")},
+"122564894":{name:"RANGASWMY V",class:"9",k:g("B"),e:g("B+"),h:g("C+"),m:g("B+"),s:g("A"),ss:g("B+")},
+"125595669":{name:"ROHINI P",class:"9",k:g("A"),e:g("A"),h:g("A"),m:g("A"),s:g("A+"),ss:g("B+")},
+"126469323":{name:"SANDEEP N",class:"9",k:g("C+"),e:g("B"),h:g("C+"),m:g("B"),s:g("B"),ss:g("C+")},
+"125593509":{name:"SANDHYA C",class:"9",k:g("C+"),e:g("B+"),h:g("B"),m:g("B"),s:g("B+"),ss:g("C+")},
+"125593986":{name:"SANTHOSH R",class:"9",k:g("C+"),e:g("B+"),h:g("C+"),m:g("B+"),s:g("B+"),ss:g("C+")},
+"120956878":{name:"SHREENIVAS R",class:"9",k:g("B+"),e:g("A"),h:g("A"),m:g("B+"),s:g("A"),ss:g("B")},
+"126473261":{name:"SOUJANYA B",class:"9",k:g("B+"),e:g("A"),h:g("A+"),m:g("A"),s:g("A+"),ss:g("A")},
+"125598584":{name:"SPANDANA R",class:"9",k:g("B+"),e:g("B+"),h:g("A"),m:g("B+"),s:g("A+"),ss:g("B+")},
+"125597098":{name:"SPANDANA T",class:"9",k:g("B+"),e:g("A"),h:g("B"),m:g("B+"),s:g("B+"),ss:g("B+")},
+"126518979":{name:"SRINIVASA P T",class:"9",k:g("B+"),e:g("A"),h:g("B+"),m:g("B+"),s:g("A+"),ss:g("B+")},
+"125590798":{name:"THANUSH N",class:"9",k:g("C+"),e:g("B+"),h:g("B"),m:g("B+"),s:g("B+"),ss:g("C+")},
+"122574928":{name:"THIPPESWAMY R",class:"9",k:0,e:0,h:0,m:0,s:0,ss:0},
+"125604006":{name:"THRIPURNA M",class:"9",k:g("A"),e:g("A"),h:g("A+"),m:g("A"),s:g("A+"),ss:g("A")},
+"125591687":{name:"VARSHITHA K",class:"9",k:g("A+"),e:g("A"),h:g("A+"),m:g("A"),s:g("A+"),ss:g("A+")},
+"126474374":{name:"VIJAYAKUMARA T",class:"9",k:g("B"),e:g("A"),h:g("B+"),m:g("B+"),s:g("A+"),ss:g("B+")},
+"126525944":{name:"VIKRAM K",class:"9",k:g("C+"),e:g("C+"),h:g("C+"),m:g("C+"),s:g("C+"),ss:g("C+")}
+
+};
+
+function getGrade(p){
+  if(p>=90) return "A+";
+  else if(p>=75) return "A";
+  else if(p>=60) return "B";
+  else if(p>=50) return "C";
+  else return "D";
+}
+
+function getResult(){
+  let roll=document.getElementById("roll").value.trim();
+
+  if(students[roll]){
+    let s=students[roll];
+    let total=s.k+s.e+s.h+s.m+s.s+s.ss;
+    let percentage=(total/78)*100;
+
+    let result=(percentage>=35)?"PASS":"FAIL";
+    let cls=(percentage>=35)?"pass":"fail";
+
+    document.getElementById("result").innerHTML=`
+    <div id="card">
+    <h3>Marks Card</h3>
+    <b>Name:</b> ${s.name}<br>
+    <b>Enrollment No:</b> ${roll}<br>
+    <b>Class:</b> ${s.class}<br><br>
+
+    Kannada: ${s.k}<br>
+    English: ${s.e}<br>
+    Hindi: ${s.h}<br>
+    Maths: ${s.m}<br>
+    Science: ${s.s}<br>
+    Social: ${s.ss}<br><br>
+
+    <b>Total:</b> ${total}/78<br>
+    <b>Percentage:</b> ${percentage.toFixed(2)}%<br>
+    <b>Grade:</b> ${getGrade(percentage)}<br>
+    <b>Result:</b> <span class="${cls}">${result}</span>
+    </div>`;
+  } else {
+    document.getElementById("result").innerHTML="<b>No result found!</b>";
+  }
+}
+
+function printResult(){
+  window.print();
+}
+</script>
+
+</body>
+</html>
